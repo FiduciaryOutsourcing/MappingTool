@@ -1,0 +1,179 @@
+<script>
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    var empIdNum = '[sample.employer_id]';
+
+    var tempEmpName = "[sample.employer_name]"
+    var empName = tempEmpName.replace(/[^a-zA-Z0-9 .,]/g, '');
+    var empEin = '[sample.employer_ein]';
+    var erAddress1 = '[sample.employer_mailing_address_1]';
+    var erAddress2 = '[sample.employer_mailing_address_2]';
+    var erCity = '[sample.employer_city]';
+    var erState = '[sample.employer_state]';
+    var erZip = '[sample.employer_zip]';
+    var empLocation = '[sample.Custom]';
+    var contractNum = '[sample.ContractNumber]';
+    var trimTop = '[sample.TrimTop]';
+    var trimBottom = '[sample.TrimBottom]';
+    var filter1Field = '[sample.Filter1Field]';
+    var filter1Value = '[sample.Filter1Value]';
+    var filter2Field = '[sample.Filter1Field]';
+    var filter2Value = '[sample.Filter1Value]';
+    var filter3Field = '[sample.Filter1Field]';
+    var filter3Value = '[sample.Filter1Value]';
+    var isMultiDivision = '[sample.IsMultiDivision]';
+    var removeDuplicates = '[sample.RemoveDuplicates]';
+    var customHeader = '[sample.CustomHeader]';
+    var removeOldTerms = '[sample.RemoveOldTerms]';
+
+    var eeTaxId = '[samplesegment.501,params.ER_ID=[sample.employer_id]]';
+    var eeFirstName = '[samplesegment.502,params.ER_ID=[sample.employer_id]]';
+    var eeLastName = '[samplesegment.503,params.ER_ID=[sample.employer_id]]';
+    var eeBirthDate = '[samplesegment.504,params.ER_ID=[sample.employer_id]]';
+    var eeHireDate = '[samplesegment.505,params.ER_ID=[sample.employer_id]]';
+    var eeStatus = '[samplesegment.506,params.ER_ID=[sample.employer_id]]';
+    var erBatches = `[samplesegment.510,params.empIdNum=[sample.employer_id]]`;
+    console.log(`ER ID: ${empIdNum}`);
+    console.log(`ER Name: ${empName}`)
+    var batchCreateDt = `[samplesegment.511,params.empIdNum=[sample.employer_id]]`;
+    var batchPayStrt = `[samplesegment.520,params.empIdNum=[sample.employer_id]]`;
+    var batchPayEnd = `[samplesegment.521,params.empIdNum=[sample.employer_id]]`;
+    var payDate = `[samplesegment.522,params.empIdNum=[sample.employer_id]]`;
+
+    var batchNum = '[samplesegment.447,params.employerId=[sample.employer_id]]';
+    if (batchNum == '') {
+        batchNum = 0;
+    }
+    var currDate = Date();
+    var dateToday = formatDate(currDate);
+    var timeNow = (new Date).toTimeString().slice(0, 8);
+    var ascLocation = '[samplesegment.376,PARAMS.employer_ID=[Sample.employer_ID],PARAMS.PayrollProviderLocation=]'
+    var dateTimeStamp = dateToday + ' ' + timeNow;
+    
+    console.log('====== Debug for embedded code on page 202 ======');
+    console.log('employer ID: ' + empIdNum);
+    console.log('employer name: ' + empName);
+    console.log('batch number: ' + batchNum);
+    console.log('contract number: ' + contractNum);
+    console.log('current date: ' + dateToday);
+    console.log('current time: ' + timeNow);
+    console.log('date and time stamp: ' + dateTimeStamp);
+    console.log('location value: ' + empLocation); // value from sample when it exists, i.e. Quorum locations
+    console.log('trim top: ' + trimTop);
+    console.log('trim borrom: ' + trimBottom);
+    console.log('filter field 1: ' + filter1Field);
+    console.log('filter value 1: ' + filter1Value);
+    console.log('filter field 2: ' + filter2Field);
+    console.log('filter value 2: ' + filter2Value);
+    console.log('filter field 3: ' + filter3Field);
+    console.log('filter value 3: ' + filter3Value);
+    console.log('multi division: ' + isMultiDivision);
+    console.log('remove duplicates: ' + removeDuplicates);
+    console.log('custom header: ' + customHeader);
+    console.log('remove old terms: ' + removeOldTerms);
+    // console.log('census data:' + eeCensusData);
+    console.log('employer EIN: ' + empEin);
+    console.log('employer Address1: ' + erAddress1);
+    console.log('employer Address2: ' + erAddress2);
+    console.log('employer City: ' + erCity);
+    console.log('employer State: ' + erState);
+    console.log('employer Zip: ' + erZip);
+    console.log('tax ID:' + eeTaxId);
+    console.log('EE First Name: ' + eeFirstName);
+    console.log('EE Last Name: ' + eeLastName);
+    console.log('EE Birth Date: ' + eeBirthDate);
+    console.log('EE Hire Date: ' + eeHireDate);
+    console.log('EE Status: ' + eeStatus);
+    console.log('ER Batches: ' + erBatches)
+    console.log('ER Batch Create Date: ' + batchCreateDt);
+    console.log('Payroll Begin Date' + batchPayStrt)
+    console.log('Period End Date' + batchPayEnd);
+    console.log('Pay Date: ' + payDate);
+
+
+    // Setting local storage values for iframe retrieval
+    localStorage.setItem('empIdNum', empIdNum);
+    localStorage.setItem('empName', empName);
+    localStorage.setItem('batchNum', batchNum);
+    localStorage.setItem('contractNum', contractNum); // may not always have a value
+    localStorage.setItem('currDate', dateToday);
+    localStorage.setItem('currTime', timeNow);
+    localStorage.setItem('dateTimeStamp', dateTimeStamp);
+    localStorage.setItem('empLocation', empLocation);
+    localStorage.setItem('trimTop', trimTop);
+    localStorage.setItem('trimBottom', trimBottom);
+    localStorage.setItem('ff1', filter1Field);
+    localStorage.setItem('fv1', filter1Value);
+    localStorage.setItem('ff2', filter2Field);
+    localStorage.setItem('fv2', filter2Value);
+    localStorage.setItem('ff3', filter3Field);
+    localStorage.setItem('fv3', filter3Value);
+    localStorage.setItem('isMultiDivision', isMultiDivision);
+    localStorage.setItem('removeDuplicates', removeDuplicates);
+    localStorage.setItem('customHeader', customHeader);
+    localStorage.setItem('removeOldTerms', removeOldTerms);
+    localStorage.setItem('empEin', empEin);
+    localStorage.setItem('erAddress1', erAddress1);
+    localStorage.setItem('erAddress2', erAddress2);
+    localStorage.setItem('erCity', erCity);
+    localStorage.setItem('erState', erState);
+    localStorage.setItem('erZip', erZip);
+    localStorage.setItem('eeTaxId', eeTaxId);
+    localStorage.setItem('eeFirstName', eeFirstName);
+    localStorage.setItem('eeLastName', eeLastName);
+    localStorage.setItem('eeBirthDate', eeBirthDate);
+    localStorage.setItem('eeHireDate', eeHireDate);
+    localStorage.setItem('eeStatus', eeStatus);
+    localStorage.setItem('erBatches', erBatches);
+    localStorage.setItem('batchCreateDt', batchCreateDt);
+    localStorage.setItem('batchPayStrt', batchPayStrt);
+    localStorage.setItem('batchPayEnd', batchPayEnd);
+    localStorage.setItem('payDate', payDate);
+
+    console.log('localStorage values set');
+
+</script>
+<p><iframe id="uploadFrame" scrolling="yes"
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/29628031.html"
+        style="border:none; overflow:hidden; background-color: white; margin-top:-80px; margin-left:-25px; height:900px; width:102%;"></iframe>
+</p>
+
+<script>
+    var urlString = `https://operations.316fiduciaries.net/oesp/beginPanel.jsp?restart=true&surveyId=1040&genId=true&interviewerId=68&VARIABLEINTERVIEWERUSERNAME=matt.eubanks@316fiduciaries.com&VARIABLEINTERVIEWERFIRSTNAME=Matt&VARIABLEINTERVIEWERLASTNAME=Eubanks&employerId=${parseInt(empIdNum)}`;
+
+        var urlEncoded = encodeURI(urlString);
+        console.log(urlEncoded);
+        var finalString = "sidePanel('" + decodeURI(urlEncoded) + "')";
+        console.log(finalString);
+        element = document.getElementById("uploadButton");
+        element.setAttribute("onclick", finalString);
+        localStorage.setItem('uploadUrlString', finalString);
+</script>
+
+<script>
+    $(".table-responsive").css("display", "none");
+    $(".panel").css("border-color", "white");
+    $(".panel-heading").css("border-color", "white");
+    $(".panel-heading").css("background-color", "white");
+
+    function hideTables() {
+        $(".table-responsive").css("display", "none");
+        $(".panel").css("border-color", "white");
+        $(".panel-heading").css("border-color", "white");
+        $(".panel-heading").css("background-color", "white");
+    }
+    setTimeout(hideTables, 100);
+
+</script>
+

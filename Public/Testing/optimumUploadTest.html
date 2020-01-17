@@ -1,0 +1,389 @@
+<div>
+    <!-- Bootstrap 4.0.0 CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553239.css">
+    <!-- Bootstrap 4.0.0 JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553280.js">
+    </script>
+    <!-- jsZip -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/31451040.js">
+    </script>
+    <!-- xlsx transformer -->
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- jQuery UI JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8013234.js">
+    </script>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+    <!-- Papa Parse JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5552990.js">
+    </script>
+    <!-- Lodash JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/6232381.js">
+    </script>
+    <!-- flatpickr datepicker JS and CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- loader/spinner CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8531998.css">
+    <style>
+        #isSalary {
+            position: fixed;
+            right: 0;
+            max-width: 350px;
+            width: 25%;
+            margin-right: 35px;
+            margin-top: 20px;
+            margin-left: 15px;
+        }
+        .inputCont {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default radio button */
+        .inputCont input {
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+        /* On mouse-over, add a grey background color */
+        .inputCont:hover input~.checkmark {
+            background-color: #ccc;
+        }
+        /* When the radio button is checked, add a blue background */
+        .inputCont input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        /* Show the indicator (dot/circle) when checked */
+        .inputCont input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .inputCont .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        ::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: white;
+        }
+
+        ::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: white;
+        }
+
+        #drop {
+            margin: 25px;
+            border: 2px dashed #bbb;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            font: 20pt bold, "Vollkorn";
+            color: #bbb
+        }
+
+        #b64data {
+            width: 100%;
+        }
+    </style>
+
+<script>
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    var empIdNum = '[sample.employer_id]';
+    var ascLocation = '[sample.ascLocation]';
+    console.log(`ascLocation: ${ascLocation}`);
+    var tempEmpName = "[sample.employer_name]"
+    var empName = tempEmpName.replace(/[^a-zA-Z0-9 .,]/g, '');
+    var empAddress1 = '[sample.employer_mailing_address_1]';
+    var empAddress2 = '[sample.employer_mailing_address_2]';
+    var empCity = '[sample.employer_city]';
+    var empState = '[sample.employer_state]';
+    var empZip = '[sample.employer_zip]';
+    var empLocation = '[sample.Custom]';
+    var contractNum = '[sample.ContractNumber]';
+    var trimTop = '[sample.TrimTop]';
+    var trimBottom = '[sample.TrimBottom]';
+    var filter1Field = '[sample.Filter1Field]';
+    var filter1Value = '[sample.Filter1Value]';
+    var filter2Field = '[sample.Filter1Field]';
+    var filter2Value = '[sample.Filter1Value]';
+    var filter3Field = '[sample.Filter1Field]';
+    var filter3Value = '[sample.Filter1Value]';
+    var isMultiDivision = '[sample.IsMultiDivision]';
+    var removeDuplicates = '[sample.RemoveDuplicates]';
+    var customHeader = '[sample.CustomHeader]';
+    var removeOldTerms = '[sample.RemoveOldTerms]';
+    var eligDateInd = '[sample.needEligDate]';
+
+    var batchNum = '[samplesegment.447,params.employerId=[sample.employer_id]]';
+    var recordKeeper = `[samplesegment.357,params.employer_id=[sample.employer_id],params.type=2]`;
+    if (batchNum == '') {
+        batchNum = 0;
+    }
+    var currDate = Date();
+    var dateToday = formatDate(currDate);
+    var timeNow = (new Date).toTimeString().slice(0, 8);
+    // var ascLocation = '[samplesegment.376,PARAMS.employer_ID=[Sample.employer_ID],PARAMS.PayrollProviderLocation=]'
+    var dateTimeStamp = dateToday + ' ' + timeNow;
+
+    console.log('====== Debug for embedded code on page 202 ======');
+    console.log('employer ID: ' + empIdNum);
+    console.log('employer name: ' + empName);
+    console.log(`empAddress1: ${empAddress1}`);
+    console.log(`empAddress2: ${empAddress2}`);
+    console.log(`empCity: ${empCity}`);
+    console.log(`empState: ${empState}`);
+    console.log(`empZip: ${empZip}`);
+    console.log('batch number: ' + batchNum);
+    console.log('contract number: ' + contractNum);
+    console.log('current date: ' + dateToday);
+    console.log('current time: ' + timeNow);
+    console.log('date and time stamp: ' + dateTimeStamp);
+    console.log('location value: ' + empLocation); // value from sample when it exists, i.e. Quorum locations
+    console.log('trim top: ' + trimTop);
+    console.log('trim borrom: ' + trimBottom);
+    console.log('filter field 1: ' + filter1Field);
+    console.log('filter value 1: ' + filter1Value);
+    console.log('filter field 2: ' + filter2Field);
+    console.log('filter value 2: ' + filter2Value);
+    console.log('filter field 3: ' + filter3Field);
+    console.log('filter value 3: ' + filter3Value);
+    console.log('multi division: ' + isMultiDivision);
+    console.log('remove duplicates: ' + removeDuplicates);
+    console.log('custom header: ' + customHeader);
+    console.log('remove old terms: ' + removeOldTerms);
+    console.log(`Record Keeper: ${recordKeeper}`)
+    console.log(`AscLocation: ${ascLocation}`)
+    console.log(`eligDateInd : ${eligDateInd}`)
+    // Setting local storage values for iframe retrieval
+    localStorage.setItem('empIdNum', empIdNum);
+    localStorage.setItem('empName', empName);
+    localStorage.setItem('empAddress1', empAddress1);
+    localStorage.setItem('empAddress2', empAddress2);
+    localStorage.setItem('empCity', empCity);
+    localStorage.setItem('empState', empState);
+    localStorage.setItem('empZip', empZip);
+    localStorage.setItem('batchNum', batchNum);
+    localStorage.setItem('contractNum', contractNum); // may not always have a value
+    localStorage.setItem('currDate', dateToday);
+    localStorage.setItem('currTime', timeNow);
+    localStorage.setItem('dateTimeStamp', dateTimeStamp);
+    localStorage.setItem('empLocation', empLocation);
+    localStorage.setItem('trimTop', trimTop);
+    localStorage.setItem('trimBottom', trimBottom);
+    localStorage.setItem('ff1', filter1Field);
+    localStorage.setItem('fv1', filter1Value);
+    localStorage.setItem('ff2', filter2Field);
+    localStorage.setItem('fv2', filter2Value);
+    localStorage.setItem('ff3', filter3Field);
+    localStorage.setItem('fv3', filter3Value);
+    localStorage.setItem('isMultiDivision', isMultiDivision);
+    localStorage.setItem('removeDuplicates', removeDuplicates);
+    localStorage.setItem('customHeader', customHeader);
+    localStorage.setItem('removeOldTerms', removeOldTerms);
+    localStorage.setItem('ascLocation', ascLocation)
+    localStorage.setItem('recordKeeper', recordKeeper);
+    localStorage.setItem('eligDateInd', eligDateInd);
+    console.log('localStorage values set');
+</script>
+
+<body>
+    <!-- Preview display fields -->
+    <br />
+    <form id="isSalary" action="something">
+        <fieldset>
+            <legend>Is Salary?
+                <label>
+                    <input class="isSalary" id="checkOff" type="checkbox" name="salaryCheck"
+                        onchange="switchFieldset(this)">
+                </label>
+            </legend>
+            <div id="ckBox" hidden='hidden'>
+                <label class="inputCont">Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='40' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Bi-Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='80' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Semi-Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='86.7' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='173.3' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <p>Step 1
+            <input id="payBeginPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period begin date..." readonly="readonly">
+        </p>
+
+        <script>
+            flatpickr("#payBeginPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 2
+            <input id="payEndPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period end date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#payEndPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 3
+            <input id="picker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select pay date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#picker", {});
+        </script>
+    </div>
+    <br />
+
+    <div id="upload-wrapper">
+        <div id="drop">Drop a Payroll File Here</div>
+        <div>Step 4
+            <label class="btn btn-primary btn-file"
+                style="background-color:#337AB7;height:35px;width:275px; font-size: 14px;">
+                Select FO Payroll Report CSV
+                <input id="xlf" style="display:none;" type="file" accept="text/*, .csv, .xlsx, .xls" />
+            </label>
+        </div>
+        <input type="checkbox" name="userabs" hidden>
+        <input type="checkbox" name="useworker" hidden>
+        <br />
+        
+        <!-- Start of experimental accordion stuff -->
+        <div class="loader" style="display:none; left:50%; position:absolute; z-index:999; top:calc(50% - 100px);">
+        </div>
+
+        <div id="accordion" style="height:600px; font-size:.9em !important; white-space: nowrap;">
+            <h3>Input Preview</h3>
+            <div id="fileDisplayArea"></div>
+            <h3>Output Preview</h3>
+            <div id="fileOutDisplayArea"></div>
+            <h3>Duplicates</h3>
+            <div id="duplicatesDisplay"></div>
+        </div>
+
+        <!-- End of experimental accordion stuff -->
+<div>
+<p style="font-size:13pt;">Step 3 <a class="btn btn-primary" id="uploadButton"
+        style="width:275px;height:35px;color: white;">Upload Mapped Payroll Report</a></p>
+
+</div>
+
+
+
+
+<script>
+    var thisBatchNum = parseInt(batchNum) + 1;
+    var urlString =
+        '/oesp/beginPanel.jsp?restart=true&surveyId=1048&genId=true&interviewerId=63&VARIABLEINTERVIEWERUSERNAME=chris.nellis@316fiduciaries.com&VARIABLEINTERVIEWERFIRSTNAME=Chris&VARIABLEINTERVIEWERLASTNAME=Nellis&employerId=' +
+        parseInt(empIdNum) + '&batchNum=' + thisBatchNum;
+    var urlEncoded = encodeURI(urlString);
+    console.log(urlEncoded);
+    var finalString = "sidePanel('" + decodeURI(urlEncoded) + "')";
+    console.log(finalString);
+    element = document.getElementById("uploadButton");
+    element.setAttribute("onclick", finalString);
+    localStorage.setItem('uploadUrlString', finalString);
+</script>
+    <script src="https://operations.316fiduciaries.net/assets/libraries/moment/js/moment.min.js"></script>
+    <script>
+        moment().format();
+    </script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/33636463.js">
+    </script>
+<script>
+    $(".table-responsive").css("display", "none");
+    $(".panel").css("border-color", "white");
+    $(".panel-heading").css("border-color", "white");
+    $(".panel-heading").css("background-color", "white");
+
+    function hideTables() {
+        console.log('I got into this script tag');
+        $(".table-responsive").css("display", "none");
+        $(".panel").css("border-color", "white");
+        $(".panel-heading").css("border-color", "white");
+        $(".panel-heading").css("background-color", "white");
+    }
+    setTimeout(hideTables, 1500);
+</script>
+</div>

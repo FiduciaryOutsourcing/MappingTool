@@ -1,0 +1,948 @@
+<html>
+
+<head>
+    <!-- Bootstrap 4.0.0 CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553239.css">
+    <!-- Bootstrap 4.0.0 JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553280.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- jQuery UI JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8013234.js"></script>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+    <!-- Papa Parse JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5552990.js"></script>
+    <!-- Lodash JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/6232381.js"></script>
+    <!-- flatpickr datepicker JS and CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- loader/spinner CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8531998.css">
+    <style>
+        #isSalary {
+
+            position: fixed;
+            right: 0;
+            max-width: 350px;
+            width: 25%;
+            margin-right: 35px;
+            margin-top: 20px;
+            margin-left: 15px;
+        }
+
+
+
+        .inputCont {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+        /* Hide the browser's default radio button */
+        .inputCont input {
+
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .inputCont:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .inputCont input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .inputCont input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .inputCont .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        ::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        :-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: white;
+        }
+
+        ::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preview display fields -->
+    <br />
+    <form id="isSalary" action="something">
+        <fieldset>
+            <legend>Is Salary?
+                <label>
+                    <input class="isSalary" id="checkOff" type="checkbox" name="salaryCheck"
+                        onchange="switchFieldset(this)">
+                </label>
+            </legend>
+            <div id="ckBox" hidden='hidden'>
+                <label class="inputCont">Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='40' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Bi-Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='80' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Semi-Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='86.7' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='173.3' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <p>Step 1
+            <input id="payBeginPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period begin date..." readonly="readonly">
+        </p>
+
+        <script>
+            flatpickr("#payBeginPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 2
+            <input id="payEndPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period end date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#payEndPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 3
+            <input id="picker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select pay date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#picker", {});
+        </script>
+    </div>
+    <br />
+
+    <div id="upload-wrapper">
+        <div>Step 4
+            <label class="btn btn-primary btn-file"
+                style="background-color:#337AB7;height:35px;width:275px; font-size: 14px;">
+                Select FO Payroll Report CSV
+                <input id="fileInput" style="display:none;" type="file" accept="text/*,.csv" />
+            </label>
+        </div>
+        <br />
+        <!-- These display areas are deprecated, to be removed completely after UAT is complete
+        <div style="color:white;background-color:#337AB7; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Source file preview:</strong></div>
+        <pre id="fileDisplayArea"
+            style="border-radius:0px 0px 8px 8px;border:5px solid #337AB7;padding:20px;width:100%;height:300px;">&nbsp;</pre>
+        <div style="color:white;background-color: #5BC0DE; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Output file preview:</strong></div>
+        <pre id="fileOutDisplayArea"
+            style="border-radius:0px 0px 8px 8px;border:5px solid #5BC0DE;padding:20px;width:100%;height:300px;">&nbsp;</pre>
+        <div id="doneText" style="color:#008fd2;"></div>
+    </div>
+
+    <div id="duplicatesDisplayArea" style="display:none;">
+        <div style="color:white;background-color:#F0AD4E; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Potential duplicates in file:</strong></div>
+        <pre id="duplicatesDisplay" style="border-radius:0px 0px 8px 8px;border:5px solid #F0AD4E;padding:20px;width:100%;height:500px;">&nbsp;</pre>
+    </div> 
+-->
+
+        <!-- Start of experimental accordion stuff -->
+        <div class="loader" style="display:none; left:50%; position:absolute; z-index:999; top:calc(50% - 100px);">
+        </div>
+
+        <div id="accordion" style="height:600px; font-size:.9em !important; white-space: nowrap;">
+            <h3>Input Preview</h3>
+            <div id="fileDisplayArea"></div>
+            <h3>Output Preview</h3>
+            <div id="fileOutDisplayArea"></div>
+            <h3>Duplicates</h3>
+            <div id="duplicatesDisplay"></div>
+        </div>
+
+        <!-- End of experimental accordion stuff -->
+
+        <script>
+            // HEADER MAP URL
+            const URL = 'https://vast-inlet-55922.herokuapp.com';
+
+            // SETTING PARSE CONFIG VARIABLES FOR PAPA PARSE
+            var parseConfig = {
+                delimiter: "",	// auto-detect
+                newline: "",	// auto-detect
+                quoteChar: '"',
+                escapeChar: '"',
+                header: true,
+                transformHeader: undefined,
+                dynamicTyping: false,
+                preview: 0,
+                encoding: "",
+                worker: false,
+                comments: false,
+                step: undefined,
+                complete: undefined,
+                error: undefined,
+                download: false,
+                skipEmptyLines: true,
+                chunk: undefined,
+                fastMode: undefined,
+                beforeFirstChunk: undefined,
+                withCredentials: undefined,
+                transform: undefined,
+                delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP]
+            }
+
+            // SETTING UNPARSE CONFIG FOR PAPA PARSE JSON BACK TO CSV
+            var unparseConfig = {
+                quotes: false, //or array of booleans
+                quoteChar: '"',
+                escapeChar: '"',
+                delimiter: ",",
+                header: true,
+                newline: "\n",
+                skipEmptyLines: true, //or 'greedy',
+                columns: null //or array of strings
+            }
+
+            // RETRIEVING VALUES FROM PARENT PAGE VIA LOCAL STORAGE
+            var empIdNum = localStorage.getItem('empIdNum');
+            var employerConfigCsv;
+            getMapById(empIdNum);
+            var empName = encodeURI(localStorage.getItem('empName')); // Using encodeURI to deal with special characters in names
+            var batchNum = localStorage.getItem('batchNum');
+            var contractNum = localStorage.getItem('contractNum');
+            var dateToday = localStorage.getItem('dateToday');
+            var timeNow = localStorage.getItem('timeNow');
+            var dateTimeStamp = localStorage.getItem('dateTimeStamp');
+            var empLocation = localStorage.getItem('empLocation');
+            var trimTop = localStorage.getItem('trimTop');
+            var trimBottom = localStorage.getItem('trimBottom');
+            var ff1 = localStorage.getItem('ff1');
+            var fv1 = localStorage.getItem('fv1');
+            var ff2 = localStorage.getItem('ff2');
+            var fv2 = localStorage.getItem('fv2');
+            var ff3 = localStorage.getItem('ff3');
+            var fv3 = localStorage.getItem('fv3');
+            var isMultiDivision = localStorage.getItem('isMultiDivision');
+            var removeDuplicates = localStorage.getItem('removeDuplicates');
+            var customHeader = localStorage.getItem('customHeader');
+            var removeOldTerms = localStorage.getItem('removeOldTerms');
+            var uploadUrlString = localStorage.getItem('uploadUrlString');
+            var recordKeeper = localStorage.getItem('recordKeeper');
+            var ascLocation = localStorage.getItem('ascLocation');
+
+            // Calculating values not pulled directly from local storage
+            var thisBatchNum = parseInt(batchNum) + 1; // batchNum is a string so we must parseInt
+            var createDate = dateToday + ' ' + timeNow;
+            var recordStatus = "Active";
+            var source = decodeURI(empName);
+            var sourceId = empIdNum;
+            var completedStages = "Upload Mapping";
+            // var empArrID = empIdNum; // this is for getting the employer template array row since it starts at index 0
+
+            // This is global for now for testing so I can inspect the object before and after changes/calculations
+            var csvOutTemp;
+
+
+            //* FOR DEBUGGING
+            console.log(`empIdNum ${empIdNum}`);
+            console.log(`empName ${empName}`)
+            console.log(`empLocation ${empLocation}`)
+
+            /* Initializing accordion for output */
+            $("#accordion").accordion({
+                active: 2,
+                collapsible: true,
+                heightStyle: "fill",
+                icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" }
+            });
+
+            $('.isSalary').click(function () {
+                $('#ckBox').removeAttr('hidden');
+            })
+
+            //========================================================================================
+            /*                                                                                      *
+             *                                     ALL FUNCTIONS                                    *
+             *                                                                                      */
+            //========================================================================================
+
+
+            //──── Function to retrieve mapping from server ──────────────────────────────────────────
+
+            function getMapById(id, callback) {
+                $.ajax({
+                    type: 'GET',
+                    url: `${URL}/api/getMap?companyID=${id}`,
+                    dataType: 'json',
+                    contentType: 'application/json',
+
+                })
+                    .done(function (response) {
+
+                        // console.log('I got here')
+                        // console.log(response)
+                        // console.log(response._id);
+                        employerConfigCsv = Object.values(response);
+                        employerConfigCsv.splice(0, 3)
+                        employerConfigCsv.splice(294)
+                        // console.log(employerConfigCsv)
+
+                        return employerConfigCsv;
+
+                    })
+                    .fail(function (err) {
+                        alert(`There was an error: ${err}`);
+                    })
+            }
+
+            //──── Function to automatically export the converted data as a file - called on conversion 
+            function download(filename, data) {
+                var csvData = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+                //IE11 & Edge
+                if (navigator.msSaveBlob) {
+                    navigator.msSaveBlob(csvData, filename);
+                } else {
+                    //In FF link must be added to DOM to be clicked
+                    var lnk = document.createElement('a');
+                    var url = window.URL;
+                    var objectURL;
+
+                    lnk.download = filename || 'untitled';
+                    lnk.href = objectURL = url.createObjectURL(csvData);
+                    lnk.dispatchEvent(new MouseEvent('click'));
+                    setTimeout(url.revokeObjectURL.bind(url, objectURL));
+                }
+            }
+
+
+
+            //──── FUNCTION TO ABBREVIATE STATE NAMES ────────────────────────────────────────────────
+            function convert_state(name, to) {
+                var name = name.toUpperCase();
+                var states = new Array({ 'name': 'Alabama', 'abbrev': 'AL' }, { 'name': 'Alaska', 'abbrev': 'AK' },
+                    { 'name': 'Arizona', 'abbrev': 'AZ' }, { 'name': 'Arkansas', 'abbrev': 'AR' }, { 'name': 'California', 'abbrev': 'CA' },
+                    { 'name': 'Colorado', 'abbrev': 'CO' }, { 'name': 'Connecticut', 'abbrev': 'CT' }, { 'name': 'Delaware', 'abbrev': 'DE' },
+                    { 'name': 'Florida', 'abbrev': 'FL' }, { 'name': 'Georgia', 'abbrev': 'GA' }, { 'name': 'Hawaii', 'abbrev': 'HI' },
+                    { 'name': 'Idaho', 'abbrev': 'ID' }, { 'name': 'Illinois', 'abbrev': 'IL' }, { 'name': 'Indiana', 'abbrev': 'IN' },
+                    { 'name': 'Iowa', 'abbrev': 'IA' }, { 'name': 'Kansas', 'abbrev': 'KS' }, { 'name': 'Kentucky', 'abbrev': 'KY' },
+                    { 'name': 'Louisiana', 'abbrev': 'LA' }, { 'name': 'Maine', 'abbrev': 'ME' }, { 'name': 'Maryland', 'abbrev': 'MD' },
+                    { 'name': 'Massachusetts', 'abbrev': 'MA' }, { 'name': 'Michigan', 'abbrev': 'MI' }, { 'name': 'Minnesota', 'abbrev': 'MN' },
+                    { 'name': 'Mississippi', 'abbrev': 'MS' }, { 'name': 'Missouri', 'abbrev': 'MO' }, { 'name': 'Montana', 'abbrev': 'MT' },
+                    { 'name': 'Nebraska', 'abbrev': 'NE' }, { 'name': 'Nevada', 'abbrev': 'NV' }, { 'name': 'New Hampshire', 'abbrev': 'NH' },
+                    { 'name': 'New Jersey', 'abbrev': 'NJ' }, { 'name': 'New Mexico', 'abbrev': 'NM' }, { 'name': 'New York', 'abbrev': 'NY' },
+                    { 'name': 'North Carolina', 'abbrev': 'NC' }, { 'name': 'North Dakota', 'abbrev': 'ND' }, { 'name': 'Ohio', 'abbrev': 'OH' },
+                    { 'name': 'Oklahoma', 'abbrev': 'OK' }, { 'name': 'Oregon', 'abbrev': 'OR' }, { 'name': 'Pennsylvania', 'abbrev': 'PA' },
+                    { 'name': 'Rhode Island', 'abbrev': 'RI' }, { 'name': 'South Carolina', 'abbrev': 'SC' }, { 'name': 'South Dakota', 'abbrev': 'SD' },
+                    { 'name': 'Tennessee', 'abbrev': 'TN' }, { 'name': 'Texas', 'abbrev': 'TX' }, { 'name': 'Utah', 'abbrev': 'UT' },
+                    { 'name': 'Vermont', 'abbrev': 'VT' }, { 'name': 'Virginia', 'abbrev': 'VA' }, { 'name': 'Washington', 'abbrev': 'WA' },
+                    { 'name': 'West Virginia', 'abbrev': 'WV' }, { 'name': 'Wisconsin', 'abbrev': 'WI' }, { 'name': 'Wyoming', 'abbrev': 'WY' }
+                );
+                var returnthis = false;
+                $.each(states, function (index, value) {
+                    if (to == 'name') {
+                        if (value.abbrev == name) {
+                            returnthis = value.name;
+                            return false;
+                        }
+                    } else if (to == 'abbrev') {
+                        if (value.name.toUpperCase() == name) {
+                            returnthis = value.abbrev;
+                            return false;
+                        }
+                    }
+                });
+                return returnthis;
+            }
+            //──── Function to add salary hours to payroll hours field ───────────────────────────────
+            checkIfSalary = function (hired, termed, rehired, payrollHours) {
+                var payPrdHours;
+                if (payrollHours == '' || payrollHours == 0 || payrollHours == undefined) {
+                    if (termed == '' || rehired !== '') {
+                        payPrdHours = $("#ckBox input[type='radio']:checked").val();
+
+                        // console.log(csvDataEmpId[i][payrollHrs]);
+                    } else {
+                        payPrdHours = payrollHours;
+                    }
+                } else {
+                    payPrdHours = payrollHours;
+                }
+                return payPrdHours;
+            }
+
+            //──── GETTING MIDDLE INITIAL VALUE ──────────────────────────────────────────────────────
+            // Taking only the first character of the middle name to populate the M.I. field
+            middleNameFunc = function (middleNme) {
+                var middleInit = '';
+                if (middleNme === undefined) {
+                    // console.log('Middle Name: ' + middleNme);
+                    return middleInit;
+                } else {
+                    if (middleNme.length < 2 && middleNme !== undefined) {
+                        middleInit = middleNme.substring(0, 1);
+                        return middleInit;
+                    } else {
+                        middleInit = middleNme.substring(0, 1);
+                        return middleInit;
+                    }
+                }
+            }
+            //// END Getting Middle Initial Value ////
+
+            //──── Check taxId length and if less than 9 put in the correct amount of zeros ──────────
+            taxIdLength = function (taxIdSsn) {
+                var zero = '0';
+                let newTaxId;
+                if (taxIdSsn === undefined) {
+                    newTaxId = taxIdSsn;
+                    // console.log(`undefined Tax ID: ${newTaxId}`);
+                    return newTaxId;
+
+                } else {
+                    // console.log('I am in the else of the tax id func');
+                    if (taxIdSsn.length <= 7) {
+                        newTaxId = `=("${zero}${zero}${taxIdSsn}")`
+                        // console.log(newTaxId);
+                        // return newTaxId;
+                    } else if (taxIdSsn.length < 9) {
+                        newTaxId = `=("${zero}${taxIdSsn}")`
+                        // console.log(newTaxId);
+                        // return newTaxId;
+                    } else {
+                        newTaxId = taxIdSsn;
+                        // console.log(`I am in the other else taxId: ${newTaxId}`);
+                        return newTaxId;
+                    }
+
+                }
+            }
+            //──── Check if a term date is older than 90 days - expects a date in the format 'MM/DD/YYYY' or 'YYYY/MM/DD' and will handle empty strings 
+            checkTermDate = function (testDate, reDate) {
+                if (testDate == '') {
+                    return true;
+                } else if (testDate !== '' && reDate !== '') {
+                    return true;
+                } else {
+                    let inputDate = Date.parse(testDate); // Parsing the date from the payroll file
+                    let todayMinus90 = Date.parse(new Date(new Date().setDate(new Date().getDate() - 90))); // Getting the date from 90 days ago and converting to same format
+                    return (inputDate < todayMinus90 ? false : true);
+                }
+            }
+
+            removeOldTermsFunc = function (employerArr, csvArr) { // This function removes the dates
+                let termFilteredArr = [];
+                let termDateFieldName = employerArr[25]; // Getting the name of this client's termination date field
+                let rehireDate = employerConfigCsv[26];
+                for (i = 0; i < csvArr.length; i++) {
+                    if (checkTermDate(csvArr[i][termDateFieldName], csvArr[i][rehireDate]) == true) {
+                        termFilteredArr.push(csvArr[i]);
+                    }
+                }
+                return termFilteredArr;
+            }
+
+            //──── this function ensures single digit numbers are given a leading 0 ──────────────────
+            fillZero = function (num) {
+                return num < 10 ? '0' + num : num;
+            }
+
+            //──── converting timestamp back to string in the format MM/DD/YYYY ──────────────────────
+            timestampToStr = function (ts) {
+                let timeStamp = ts;
+                let tsObj = new Date(timeStamp);
+                let month = tsObj.getMonth() + 1; // months returned using starting index of 0
+                let day = tsObj.getDate();
+                let year = tsObj.getFullYear();
+                let dateString = fillZero(month) + '/' + fillZero(day) + '/' + year;
+                return dateString;
+            }
+
+            //──── DETERMINE EMPLOYEE STATUS ─────────────────────────────────────────────────────────
+            // > Accepts three dates as input: hire date, term date and rehire date ('MM/DD/YYYY' or 'YYYY/MM/DD')
+            // > Returns an array of two values: [ <employee status>, <employee status date> ]
+            determineEmpStatus = function (hire, term, rehire) {
+                let hired = Date.parse(hire);
+                let termed = Date.parse(term);
+                let rehired = Date.parse(rehire);
+                let results = [];
+                if (Number.isNaN(hired) && Number.isNaN(termed) && Number.isNaN(rehired)) { // Date.parse on non-dates = NaN
+                    //console.log('No status dates were found');
+                    results = ['', '']; // returning empty values if no dates are provided
+                    return results;
+                } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == true && Number.isNaN(rehired) == true) {
+                    results = ['A', timestampToStr(hired)];
+                    return results;
+                } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == false && Number.isNaN(rehired) == true) {
+                    results = ['T', timestampToStr(termed)];
+                    return results;
+                } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == false && Number.isNaN(rehired) == false) {
+                    if (termed > rehired) {
+                        results = ['T', timestampToStr(termed)];
+                        return results;
+                    } else if (termed < rehired) {
+                        results = ['A', timestampToStr(rehired)];
+                        return results;
+                    } else if (hired < rehired) {
+                        results = ['A', timestampToStr(rehired)];
+                        return results;
+                    }
+                } else {
+                    results = ['A', timestampToStr(rehired)];
+                    return results;
+                }
+            }
+
+            capitalizeFirstLetter = function (string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+            // To be moved later!
+            json2table = function (json, classes) {
+                var cols = Object.keys(json[0]);
+                var headerRow = '';
+                var bodyRows = '';
+                classes = classes || '';
+
+                cols.map(function (col) {
+                    headerRow += `<th>${capitalizeFirstLetter(col)}</th>`;
+                });
+                json.map(function (row) {
+                    bodyRows += '<tr>';
+                    cols.map(function (colName) {
+
+                        bodyRows += `<td>${row[colName]}</td>`;
+                    })
+                    bodyRows += '</tr>';
+                });
+                return `<table style="font-size:10pt;" class="${classes}">
+                                        <thead>
+                                            <tr>${headerRow}</tr>
+                                        </thead>
+                                        <tbody>
+                                            ${bodyRows}
+                                        </tbody>
+                                    </table>`;
+
+
+            }
+
+            //──── CHECK IF THERE ARE DIFFERENCES ────────────────────────────────────────────────────
+            // Although the filteredArr variable should contain at least one row of each of the duplicated entries, it is not all inclusive
+            // As a result, we need to create a difference array based on those values - then finally find the reverse as our result
+            filterByDifference = function (array1, array2, compareField) {
+                var onlyInA = differenceInFirstArray(array1, array2, compareField);
+                var onlyInb = differenceInFirstArray(array2, array1, compareField);
+                return onlyInA.concat(onlyInb);
+            }
+            differenceInFirstArray = function (array1, array2, compareField) {
+                return array1.filter(function (current) {
+                    return array2.filter(function (current_b) {
+                        return current_b[compareField] === current[compareField];
+                    }).length == 0;
+                });
+            }
+
+            filterArr = function (csvOut, taxKey) {
+                let filtArr = [];
+                for (var i = 0; i < csvOut.length; i++) {
+                    for (var n = i + 1; n < csvOut.length; n++) {
+                        if (csvOut[i][taxKey] == csvOut[n][taxKey]) {
+                            filtArr.push(csvOut[n]);
+                        }
+                    }
+                }
+                return filtArr;
+            }
+            //──── CHECK THE ELIGIBILITY FOR VANGUARD ────────────────────────────────────────────────
+
+            getFirstDateOfMonth = function (date) {
+                const now = new Date(date);
+                return new Date(now.getFullYear(), now.getMonth());
+            }
+            getLastDateOfMonth = function (date) {
+                let newDate = new Date(date);
+                let y = newDate.getFullYear();
+                let m = newDate.getMonth();
+                let lastDay = new Date(y, m + 1, 0);
+                return lastDay;
+            }
+
+            addDays = function (date, days) {
+                var result = new Date(date);
+                result.setDate(result.getDate() + days);
+                return result;
+            }
+
+            getAge = function (dateString) {
+                let today = new Date();
+                var birthDate = new Date(dateString);
+                var age = today.getFullYear() - birthDate.getFullYear();
+                let m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+            checkEligibility = function (birth, hired, termed) {
+                let today = new Date();
+                let eligDate;
+                let dayPlus60 = new Date(addDays(hired, 60));
+                let bDay = getAge(birth);
+                let firstDayOfMonth = new Date(getFirstDateOfMonth(dayPlus60));
+                let lastDayOfMonth = new Date(getLastDateOfMonth(dayPlus60));
+                let firstOfNewMonth = new Date(addDays(lastDayOfMonth, 1));
+                if (bDay >= 21 && dayPlus60.getTime() <= today.getTime()) {
+
+                    if (dayPlus60.getTime() !== firstDayOfMonth.getTime()) {
+                        eligDate = firstOfNewMonth;
+                    } else {
+                        eligDate = dayPlus60;
+                    }
+                } else if (dayPlus60.getTime() >= today.getTime() && bDay < 21) {
+                    let firstOfbDayMonth = new Date(getFirstDateOfMonth(birth));
+                    let lastDayOfbDayMonth = new Date(getLastDateOfMonth(birth));
+                    let firstOfMonthAftbDay = new Date(addDays(lastDayOfbDayMonth, 1));
+                    if (bday.getTime() !== firstOfbDayMonth.getTime()) {
+                        eligDate = firstOfMonthAftbDay;
+
+                    } else {
+                        eligDate = birth;
+                    }
+                } else {
+                    eligDate = firstOfNewMonth;
+                }
+                return eligDate;
+            }
+            getStatusChange = function (hired, termed, rehired) {
+                let hire = new Date(hired);
+                console.log(`Hire Date: ${hire}`);
+                let term = new Date(termed);
+                console.log(`term Date: ${term}`)
+                let rehire = new Date(rehired);
+                console.log(`rehire Date: ${rehire}`)
+                let result;
+                if (hire !== undefined && term !== undefined) {
+                    if (rehire !== undefined && rehire > term) {
+                        result = '';
+                    } else if (term > hire || term > rehire) {
+                        result = 1;
+                    }
+                } else {
+                    console.log('in the else statement');
+                    result = '';
+                }
+                console.log(`This is the Result: ${result}`);
+                return result;
+            }
+            divisionToAscLocation = function (division, ascLoc) {
+                let result = [];
+                if (division.toUpperCase() == 'A') {
+                    result = ['A', 1];
+                } else if (division.toUpperCase() == 'B') {
+                    result = ['B', 2];
+                } else if (division.toUpperCase() == 'C') {
+                    result = ['C', 3];
+                } else {
+                    result = ['D', ascLoc];
+                }
+                return result;
+            }
+
+            //========================================================================================
+            /*                                                                                      *
+             *                            This is where the window loads                            *
+             *                                                                                      */
+            //========================================================================================
+
+            window.fileIn; // Debug
+            window.onload = function () {
+                var fileInput = document.getElementById('fileInput');
+                var fileDisplayArea = document.getElementById('fileDisplayArea');
+                var fileOutDisplayArea = document.getElementById('fileOutDisplayArea');
+                var duplicatesDisplayElem = document.getElementById('duplicatesDisplay');
+
+                //──── FILE INPUT ────────────────────────────────────────────────────────────────────────
+                fileInput.addEventListener('change', function (e) {
+                    $(".loader").css("display", "block");
+                    var file = fileInput.files[0];
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        fileDisplayArea.innerText = reader.result;
+                        fileIn = reader.result;
+                        var fileInParsed = fileIn.replace(/(00\/00\/0000)/g, ''); // Removing 00/00/00 dates (i.e. Quorum)
+                        var csvData = Papa.parse(fileInParsed, parseConfig);
+                        // Setting keys to pull in values from imported payroll data
+                        var payBegin = document.getElementById("payBeginPicker").value;
+                        var payEnd = document.getElementById("payEndPicker").value;
+                        var payDate = document.getElementById("picker").value;
+                        var location = employerConfigCsv[9];
+                        var taxIdKeyName = employerConfigCsv[10]; // Getting the name of this client's Tax ID/SSN keys to find it in objects
+                        var taxID = employerConfigCsv[10];
+                        var middle_name = employerConfigCsv[12];
+                        var state = employerConfigCsv[21];
+                        var birthDate = employerConfigCsv[23];
+                        var hireDate = employerConfigCsv[24];
+                        var termDate = employerConfigCsv[25];
+                        var rehireDate = employerConfigCsv[26];
+                        var employeeStatus = employerConfigCsv[28];
+                        var statusDateField = employerConfigCsv[39];
+                        var statusChangeReason = employerConfigCsv[40];
+                        var eeEligibilityDate = employerConfigCsv[41];
+                        var ascLocal = employerConfigCsv[45];
+                        var middleInt = employerConfigCsv[70];
+                        var division = employerConfigCsv[83];
+                        var checkDate = employerConfigCsv[94];
+                        var payEndDate = employerConfigCsv[95];
+                        var payrollHrs = employerConfigCsv[191];
+                        var statusField = employerConfigCsv[246];
+                        var eligInd = employerConfigCsv[247];
+                        var eeStatus = employerConfigCsv[254];
+                        var status_date = employerConfigCsv[255];
+                        var payStartDate = employerConfigCsv[278];
+                        var voyaEmpId = employerConfigCsv[284];
+
+                        //csvData.data is the json object with all the data in it
+                        csvOutTemp = csvData.data; // Debug - to be removed later
+
+                        //// SETTING NEW/UPDATED VALUES IN DATA OBJECTS ////
+                        //console.log(csvOutTemp);
+                        /*Modifying original CSV data to add the employer ID in the output CSV
+                        These values are being brought in above from local storage
+                        Getting date picker value first for efficiency*/
+
+                        var csvDataEmpId = csvOutTemp.map(function (o) {
+                            o.EmployerId = empIdNum;
+                            o.CreateDate = dateTimeStamp;
+                            o.RecordStatus = recordStatus;
+                            o.Source = source;
+                            o.SourceId = sourceId;
+                            o.BatchNumber = thisBatchNum;
+                            o.ContractNumber = contractNum;
+                            o.CompletedStages = completedStages;
+                            o.AscLocation = ascLocation;
+                            o.PayrollStartDate = payBegin;
+                            o.PayrollEndDate = payEnd;
+                            o.CheckDate = payDate; // From date picker (was PayrollEndDate)
+                            if (empLocation != '') {
+                                o.Division = empLocation;
+                                // console.log(empIdNum);
+                                //* Check if the employer id is from spectrum Paint and if so then put the correct sub company ID in the location field.
+                                if (empIdNum == 105 || empIdNum == 106 || empIdNum == 107) {
+                                    o.Location = '2';
+                                } else {
+                                    o.Location = empLocation; // Some mappings use "EmpLocation" and others use "Location" or "Division"
+                                }
+                            }
+                            return o;
+                        })
+                        //// END Setting New/Updated Values in Data Objects ////
+
+                        csvOutputTemp = csvDataEmpId; // Debug
+
+                        if (removeOldTerms !== 'No') {
+                            var csvDataEmpId = removeOldTermsFunc(employerConfigCsv, csvOutputTemp); // Need to make a clearer data path with all these arrays
+                            //console.log('%cRemoved terms older than 90 days', 'background: #CCFFCC; color: green');
+                        }
+
+
+
+                        function iterateRows() {
+                            for (i = 0; i < csvDataEmpId.length; i++) {
+                                let birth = csvDataEmpId[i][birthDate]
+                                let hired = csvDataEmpId[i][hireDate];
+                                let termed = csvDataEmpId[i][termDate];
+                                let rehired = csvDataEmpId[i][rehireDate];
+                                let payrollHours = csvDataEmpId[i][payrollHrs];
+                                let taxIdSsn = csvDataEmpId[i][taxID];
+                                let stateRow = csvDataEmpId[i][state];
+                                let static_date = csvDataEmpId[i][status_date];
+                                let status_Reason = csvDataEmpId[i][statusChangeReason];
+                                let divisionName = csvDataEmpId[i][division];
+                                let ascLocale = csvDataEmpId[i][ascLocal];
+                                let middleNme = csvDataEmpId[i][middle_name];
+                                let middleIn = csvDataEmpId[i][middleInt];
+                                let empStatus = csvDataEmpId[i][eeStatus];
+                                let payrollDate = csvDataEmpId[i][checkDate];
+                                let payEnd = csvDataEmpId[i][payEndDate];
+                                let payStart = csvDataEmpId[i][payStartDate];
+                                let employeeStat = csvDataEmpId[i][employeeStatus]
+                                let voyaEmplrId = csvDataEmpId[i][voyaEmpId];
+
+                                let resultArr = determineEmpStatus(hired, termed, rehired);
+                                // console.log(`resultArr: ${resultArr}`); // debug
+                                
+
+                                csvDataEmpId[i][middleInt] = middleNameFunc(middleNme);
+                                if (taxIdSsn !== undefined || taxIdSsn !== '') {
+                                    csvDataEmpId[i][taxID] = taxIdLength(taxIdSsn);
+                                }
+                                //* If Salary box is checked get value of radio button
+                                if ($('.isSalary').is(':checked')) {
+                                    csvDataEmpId[i][payrollHrs] = checkIfSalary(hired, termed, rehired, payrollHours);
+                                }
+                                //* Set employee status and the date 
+                                // console.log(`birth date before: ${birth}`);
+                                if (empStatus == undefined || empStatus == '') {
+                                    // console.log(`birth inside if: ${birth}`);
+                                    if (resultArr !== undefined) {
+                                        csvDataEmpId[i][statusField] = resultArr[0]; // setting the employee status value
+                                        csvDataEmpId[i][statusDateField] = resultArr[1]; // setting status change date
+                                        if (resultArr[0] == 'A') {
+                                            csvDataEmpId[i][status_date] = payrollDate;
+                                        } else if (resultArr[0] == 'T') {
+                                            csvDataEmpId[i][status_date] = termed;
+                                        }
+                                    } else {
+                                        csvDataEmpId[i][statusField] = resultArr[0]; // setting the employee status value
+                                        csvDataEmpId[i][statusDateField] = resultArr[1];
+                                    }
+                                }
+                                if (stateRow !== undefined && stateRow.length > 2) {
+                                    csvDataEmpId[i][state] = convert_state(stateRow, 'abbrev');
+                                }
+                                if (recordKeeper == 'Vanguard-Ascensus') {
+                                    csvDataEmpId[i][eeEligibilityDate] = checkEligibility(birth, hired, termed);
+                                } 
+                                if (recordKeeper == 'Voya') {
+                                    csvDataEmpId[i][voyaEmpId] = contractNum;
+                                }
+
+                                if (empIdNum === '30') {
+                                    console.log('The empIdNum is 30')
+                                    csvDataEmpId[i][statusChangeReason] = getStatusChange(hired, termed, rehired)
+                                }
+                                console.log(isMultiDivision.toUpperCase());
+                                if (isMultiDivision.toUpperCase() == 'YES') {
+                                    console.log('I am in the multi division')
+                                    console.log(`divisionName: ${divisionName}`);
+                                    let divisionArray = divisionToAscLocation(divisionName, ascLocation);
+                                    
+                                    csvDataEmpId[i][division] = divisionArray[0];
+                                    csvDataEmpId[i][location] = divisionArray[1];
+                                    csvDataEmpId[i][ascLocal] = divisionArray[1];
+                                }
+                            }
+                        }
+                        iterateRows();
+
+                        var filteredArr = filterArr(csvOutputTemp, taxIdKeyName);
+
+                        // Calling the above function
+                        var tempOut1 = filterByDifference(filteredArr, csvOutputTemp, taxIdKeyName);
+                        var tempOut2 = filterByDifference(tempOut1, csvOutputTemp, taxIdKeyName);
+                        finalFilteredVal = tempOut2; // Debug                        
+
+                        // Show duplicates output field if any are found
+                        // var strFilteredArr = [];
+                        if (tempOut2.length > 0) {
+                            duplicatesDisplayElem.innerHTML = json2table(tempOut2, 'table');
+                        } else {
+                            duplicatesDisplayElem.innerText = 'No duplicates were found in this file';
+                        }
+                        /* End of duplicates search and display */
+
+
+
+                        // Unparsing JSON object back to CSV
+                        var csvOut = Papa.unparse({
+                            fields: employerConfigCsv, //*array of headers
+                            data: csvDataEmpId,
+                            config: unparseConfig
+                        })
+
+                        fileOutDisplayArea.innerText = csvOut;
+                        $(".loader").css("display", "none");
+
+                        //Old download
+                        // download("FO Payroll Report - Igor Upload - " + decodeURI(empName) + ".csv", csvOut);
+
+                        //New Download Using Blob
+                        download("FO Payroll Report - Igor Upload - " + decodeURI(empName) + ".csv", csvOut);
+
+                        // Notify the user the file is ready
+                        // alert("File is ready - please check your downloads"); // precoded this alert, but it is annoying - adding text to page instead
+                        // document.getElementById('doneText').innerHTML = "<center><h3>File successfully processed, please check your downloads</h3></center>";
+
+                    }
+                    reader.readAsText(file);
+                });
+
+            }
+
+        </script>
+
+</body>
+
+</html>

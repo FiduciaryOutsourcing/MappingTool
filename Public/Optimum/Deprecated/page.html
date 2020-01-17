@@ -1,0 +1,153 @@
+<script>
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    var empIdNum = '[sample.employer_id]';
+
+    var tempEmpName = "[sample.employer_name]"
+    var empName = tempEmpName.replace(/[^a-zA-Z0-9 .,]/g, '');
+    var address1 = '[sample.employer_mailing_address_1' 
+    var empLocation = '[sample.Custom]';
+    var contractNum = '[sample.ContractNumber]';
+    var trimTop = '[sample.TrimTop]';
+    var trimBottom = '[sample.TrimBottom]';
+    var filter1Field = '[sample.Filter1Field]';
+    var filter1Value = '[sample.Filter1Value]';
+    var filter2Field = '[sample.Filter1Field]';
+    var filter2Value = '[sample.Filter1Value]';
+    var filter3Field = '[sample.Filter1Field]';
+    var filter3Value = '[sample.Filter1Value]';
+    var isMultiDivision = '[sample.IsMultiDivision]';
+    var removeDuplicates = '[sample.RemoveDuplicates]';
+    var customHeader = '[sample.CustomHeader]';
+    var removeOldTerms = '[sample.RemoveOldTerms]';
+    var batchNum = '[samplesegment.447,params.employerId=[sample.employer_id]]';
+    if (batchNum == '') {
+        batchNum = 0;
+    }
+    var currDate = Date();
+    var dateToday = formatDate(currDate);
+    var timeNow = (new Date).toTimeString().slice(0, 8);
+    var ascLocation = '[samplesegment.376,PARAMS.employer_ID=[Sample.employer_ID],PARAMS.PayrollProviderLocation=]'
+    var dateTimeStamp = dateToday + ' ' + timeNow;
+    window.onload = function () {
+        var empData = {
+            'empIdNum': empIdNum,
+            'empName': empName,
+            'empLocation': empLocation,
+            'contractNum': contractNum,
+            'trimTop': trimTop,
+            'trimBottom': trimBottom,
+            'ff1': filter1Field,
+            'fv1': filter1Value,
+            'ff2': filter2Field,
+            'fv2': filter2Value,
+            'ff3': filter3Field,
+            'fv3': filter3Value,
+            'isMultiDivision': isMultiDivision,
+            'removeDuplicates': removeDuplicates,
+            'customHeader': customHeader,
+            'removeOldTerms': removeOldTerms,
+            'batchNum': batchNum,
+            'currDate': currDate,
+            'dateToday': dateToday,
+            'timeNow': timeNow,
+            'ascLocation': ascLocation,
+            'dateTimeStamp': dateTimeStamp
+        }
+
+        var iFrame = document.getElementById('uploadFrame').contentWindow;
+        iFrame.postMessage(JSON.stringify(empData), "*")
+        console.log('I passed the data to the frame.');
+        console.log(empIdNum);
+    };
+    console.log('====== Debug for embedded code on page 202 ======');
+    console.log('employer ID: ' + empIdNum);
+    console.log('employer name: ' + empName);
+    console.log('batch number: ' + batchNum);
+    console.log('contract number: ' + contractNum);
+    console.log('current date: ' + dateToday);
+    console.log('current time: ' + timeNow);
+    console.log('date and time stamp: ' + dateTimeStamp);
+    console.log('location value: ' + empLocation); // value from sample when it exists, i.e. Quorum locations
+    console.log('trim top: ' + trimTop);
+    console.log('trim borrom: ' + trimBottom);
+    console.log('filter field 1: ' + filter1Field);
+    console.log('filter value 1: ' + filter1Value);
+    console.log('filter field 2: ' + filter2Field);
+    console.log('filter value 2: ' + filter2Value);
+    console.log('filter field 3: ' + filter3Field);
+    console.log('filter value 3: ' + filter3Value);
+    console.log('multi division: ' + isMultiDivision);
+    console.log('remove duplicates: ' + removeDuplicates);
+    console.log('custom header: ' + customHeader);
+    console.log('remove old terms: ' + removeOldTerms);
+    // Setting local storage values for iframe retrieval
+    localStorage.setItem('empIdNum', empIdNum);
+    localStorage.setItem('empName', empName);
+    localStorage.setItem('batchNum', batchNum);
+    localStorage.setItem('contractNum', contractNum); // may not always have a value
+    localStorage.setItem('currDate', dateToday);
+    localStorage.setItem('currTime', timeNow);
+    localStorage.setItem('dateTimeStamp', dateTimeStamp);
+    localStorage.setItem('empLocation', empLocation);
+    localStorage.setItem('trimTop', trimTop);
+    localStorage.setItem('trimBottom', trimBottom);
+    localStorage.setItem('ff1', filter1Field);
+    localStorage.setItem('fv1', filter1Value);
+    localStorage.setItem('ff2', filter2Field);
+    localStorage.setItem('fv2', filter2Value);
+    localStorage.setItem('ff3', filter3Field);
+    localStorage.setItem('fv3', filter3Value);
+    localStorage.setItem('isMultiDivision', isMultiDivision);
+    localStorage.setItem('removeDuplicates', removeDuplicates);
+    localStorage.setItem('customHeader', customHeader);
+    localStorage.setItem('removeOldTerms', removeOldTerms);
+    console.log('localStorage values set');
+
+</script>
+<p><iframe id="uploadFrame" scrolling="no"
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/28937270.html"
+        style="border:none; overflow:hidden; background-color: white; margin-top:-80px; margin-left:-25px; height:800px; width:102%;"></iframe>
+</p>
+
+<p style="margin-left:-20px;font-size:13pt;">Step 3 <a class="btn btn-primary" id="uploadButton"
+        style="width:275px;height:35px;">Upload Mapped Payroll Report</a></p>
+<script>
+    var thisBatchNum = parseInt(batchNum) + 1;
+    var urlString =
+        '/oesp/beginPanel.jsp?restart=true&surveyId=1009&genId=true&interviewerId=63&VARIABLEINTERVIEWERUSERNAME=chris.nellis@316fiduciaries.com&VARIABLEINTERVIEWERFIRSTNAME=Chris&VARIABLEINTERVIEWERLASTNAME=Nellis&employerId=' +
+        parseInt(empIdNum) + '&batchNum=' + thisBatchNum;
+    var urlEncoded = encodeURI(urlString);
+    console.log(urlEncoded);
+    var finalString = "sidePanel('" + decodeURI(urlEncoded) + "')";
+    console.log(finalString);
+    element = document.getElementById("uploadButton");
+    element.setAttribute("onclick", finalString);
+    localStorage.setItem('uploadUrlString', finalString);
+</script>
+<script>
+    $(".table-responsive").css("display", "none");
+    $(".panel").css("border-color", "white");
+    $(".panel-heading").css("border-color", "white");
+    $(".panel-heading").css("background-color", "white");
+
+    function hideTables() {
+        $(".table-responsive").css("display", "none");
+        $(".panel").css("border-color", "white");
+        $(".panel-heading").css("border-color", "white");
+        $(".panel-heading").css("background-color", "white");
+    }
+    setTimeout(hideTables, 1500);
+
+</script>

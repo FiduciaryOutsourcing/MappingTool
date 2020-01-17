@@ -1,0 +1,701 @@
+<html>
+
+<head>
+    <!-- Bootstrap 4.0.0 CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553239.css">
+    <!-- Bootstrap 4.0.0 JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5553280.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- jQuery UI JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8013234.js"></script>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+    <!-- Papa Parse JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la19IPgkOVU2pbfeoBvKQcm3cO41VXpX34eVxPZFZba-4/5552990.js"></script>
+    <!-- Lodash JS -->
+    <script
+        src="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/6232381.js"></script>
+    <!-- flatpickr datepicker JS and CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- loader/spinner CSS -->
+    <link rel="stylesheet"
+        href="https://operations.316fiduciaries.net/oesp/data/6sm5gu5fXD9qfZoyxO6la2Q1il2hHcp6zfY24jgUfggMW2CMSi93SwM7B4F7OSwm/8531998.css">
+    <style>
+        #isSalary {
+
+            position: fixed;
+            right: 0;
+            max-width: 350px;
+            width: 25%;
+            margin-right: 35px;
+            margin-top: 20px;
+            margin-left: 15px;
+        }
+
+
+
+        .inputCont {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+        /* Hide the browser's default radio button */
+        .inputCont input {
+
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .inputCont:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .inputCont input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .inputCont input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .inputCont .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preview display fields -->
+    <br />
+    <form id="isSalary" action="something">
+        <fieldset>
+            <legend>Is Salary?
+                <label>
+                    <input class="isSalary" id="checkOff" type="checkbox" name="salaryCheck"
+                        onchange="switchFieldset(this)">
+                </label>
+            </legend>
+            <div id="ckBox" hidden='hidden'>
+                <label class="inputCont">Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='40' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Bi-Weekly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='80' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Semi-Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='86.7' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="inputCont">Monthly
+                    <input class="radioCheck" id="checkOff" type="radio" name="salary" value='173.3' hidden='hidden'>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <p>Step 1 <input id="payBeginPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period begin date..." readonly="readonly"></p>
+
+        <script>
+            flatpickr("#payBeginPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 2
+            <input id="payEndPicker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select period end date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#payEndPicker", {});
+        </script>
+    </div>
+    <div>
+        <p>
+            Step 3
+            <input id="picker" class="flatpickr flatpickr-input"
+                style="text-align:center; width:275px; height:35px; color:white;background-color:#337AB7; border-radius: 4px 4px 4px 4px; border:5px solid #337AB7; font-size: 14px;"
+                type="text" placeholder="Select pay date..." readonly="readonly">
+        </p>
+        <script>
+            flatpickr("#picker", {});
+        </script>
+    </div>
+    <br />
+
+    <div id="upload-wrapper">
+        <div>Step 4
+            <label class="btn btn-primary btn-file"
+                style="background-color:#337AB7;height:35px;width:275px; font-size: 14px;">
+                Select FO Payroll Report CSV
+                <input id="fileInput" style="display:none;" type="file" accept="text/*,.csv" />
+            </label>
+        </div>
+        <br />
+        <!-- These display areas are deprecated, to be removed completely after UAT is complete
+        <div style="color:white;background-color:#337AB7; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Source file preview:</strong></div>
+        <pre id="fileDisplayArea"
+            style="border-radius:0px 0px 8px 8px;border:5px solid #337AB7;padding:20px;width:100%;height:300px;">&nbsp;</pre>
+        <div style="color:white;background-color: #5BC0DE; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Output file preview:</strong></div>
+        <pre id="fileOutDisplayArea"
+            style="border-radius:0px 0px 8px 8px;border:5px solid #5BC0DE;padding:20px;width:100%;height:300px;">&nbsp;</pre>
+        <div id="doneText" style="color:#008fd2;"></div>
+    </div>
+
+    <div id="duplicatesDisplayArea" style="display:none;">
+        <div style="color:white;background-color:#F0AD4E; border-radius: 8px 8px 0px 0px; height:1.5em; font-size: 14px;"><strong>Potential duplicates in file:</strong></div>
+        <pre id="duplicatesDisplay" style="border-radius:0px 0px 8px 8px;border:5px solid #F0AD4E;padding:20px;width:100%;height:500px;">&nbsp;</pre>
+    </div> 
+-->
+
+        <!-- Start of experimental accordion stuff -->
+        <div class="loader" style="display:none; left:50%; position:absolute; z-index:999; top:calc(50% - 100px);">
+        </div>
+
+        <div id="accordion" style="height:600px; font-size:.9em !important; white-space: nowrap;">
+            <h3>Input Preview</h3>
+            <div id="fileDisplayArea"></div>
+            <h3>Output Preview</h3>
+            <div id="fileOutDisplayArea"></div>
+            <h3>Duplicates</h3>
+            <div id="duplicatesDisplay"></div>
+        </div>
+
+        <!-- End of experimental accordion stuff -->
+
+        <script>
+            /* Initializing accordion for output */
+            $("#accordion").accordion({
+                active: 2,
+                collapsible: true,
+                heightStyle: "fill",
+                icons: { "header": "ui-icon-plus", "activeHeader": "ui-icon-minus" }
+            });
+
+            $('.isSalary').click(function () {
+                $('#ckBox').removeAttr('hidden');
+            })
+
+
+
+            const URL = 'https://vast-inlet-55922.herokuapp.com';
+            // Configuration data for each employer - due to 0 start index, subtract 1 from the employer ID value to get the correct row
+            //* need to replace this var with server request to get employer data from DB
+
+
+            // Retrieving values from parent page via local storage
+            // var empIdNum = document.getElementById('comID').value;       
+            var payload;
+            window.onmessage = function (e) {
+
+                payload = JSON.parse(e.data);
+                return payload;
+            };
+            console.log(payload);
+
+            var dataObj = {};
+
+            var empIdNum = localStorage.getItem('empIdNum');
+            dataObj['empIdNum'] = empIdNum;
+            console.log('empIdNum')
+            console.log(empIdNum)
+            //var empIdNum = 4;
+            var employerConfigCsv;
+            getMapById(empIdNum);
+            var empName = encodeURI(localStorage.getItem('empName')); // Using encodeURI to deal with special characters in names
+            console.log(empName)
+            var batchNum = localStorage.getItem('batchNum');
+            var contractNum = localStorage.getItem('contractNum');
+            var dateToday = localStorage.getItem('dateToday');
+            var timeNow = localStorage.getItem('timeNow');
+            var dateTimeStamp = localStorage.getItem('dateTimeStamp');
+            var empLocation = localStorage.getItem('empLocation');
+            console.log(empLocation)
+            var trimTop = localStorage.getItem('trimTop');
+            var trimBottom = localStorage.getItem('trimBottom');
+            var ff1 = localStorage.getItem('ff1');
+            var fv1 = localStorage.getItem('fv1');
+            var ff2 = localStorage.getItem('ff2');
+            var fv2 = localStorage.getItem('fv2');
+            var ff3 = localStorage.getItem('ff3');
+            var fv3 = localStorage.getItem('fv3');
+            var isMultiDivision = localStorage.getItem('isMultiDivision');
+            var removeDuplicates = localStorage.getItem('removeDuplicates');
+            var customHeader = localStorage.getItem('customHeader');
+            var removeOldTerms = localStorage.getItem('removeOldTerms');
+            var uploadUrlString = localStorage.getItem('uploadUrlString');
+            // TODO - need to figure out ASC location scheme (to be passed by local storage as well - maybe in employer dataset?)
+            var ascLocation = 1;
+
+            // Calculating values not pulled directly from local storage
+            var thisBatchNum = parseInt(batchNum) + 1; // batchNum is a string so we must parseInt
+            var createDate = dateToday + ' ' + timeNow;
+            var recordStatus = "Active";
+            var source = decodeURI(empName);
+            var completedStages = "Upload Mapping";
+            // var empArrID = empIdNum; // this is for getting the employer template array row since it starts at index 0
+
+            // This is global for now for testing so I can inspect the object before and after changes/calculations
+            var csvOutTemp;
+
+
+            //* Function to retrieve mapping from server
+
+            function getMapById(id, callback) {
+                    $.ajax({
+                        type: 'GET',
+                        url: `${URL}/api/getMap?companyID=${id}`,
+                        dataType: 'json',
+                        contentType: 'application/json',
+
+                    })
+                        .done(function (response) {
+
+                            console.log('I got here')
+                            console.log(response)
+                            // console.log(response._id);
+                            employerConfigCsv = Object.values(response);
+                            employerConfigCsv.splice(0, 3)
+                            employerConfigCsv.splice(294)
+                            console.log(employerConfigCsv)
+
+                            return employerConfigCsv;
+
+                        })
+                        .fail(function (err) {
+                            console.error(err);
+                        })
+                }
+
+            // Function to automatically export the converted data as a file - called on conversion
+            function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+
+            // All configuration options for parsing CSV
+            var parseConfig =
+            {
+                delimiter: "",	// auto-detect
+                newline: "",	// auto-detect
+                quoteChar: '"',
+                escapeChar: '"',
+                header: true,
+                transformHeader: undefined,
+                dynamicTyping: false,
+                preview: 0,
+                encoding: "",
+                worker: false,
+                comments: false,
+                step: undefined,
+                complete: undefined,
+                error: undefined,
+                download: false,
+                skipEmptyLines: true,
+                chunk: undefined,
+                fastMode: undefined,
+                beforeFirstChunk: undefined,
+                withCredentials: undefined,
+                transform: undefined,
+                delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP]
+            };
+            // All configuration options for "unparsing" JSON back to CSV
+            var unparseConfig =
+            {
+                quotes: false, //or array of booleans
+                quoteChar: '"',
+                escapeChar: '"',
+                delimiter: ",",
+                header: true,
+                newline: "\n",
+                skipEmptyLines: true, //or 'greedy',
+                columns: null //or array of strings
+            }
+
+            window.fileIn; // Debug
+            window.onload = function () {
+                var fileInput = document.getElementById('fileInput');
+                var fileDisplayArea = document.getElementById('fileDisplayArea');
+                var fileOutDisplayArea = document.getElementById('fileOutDisplayArea');
+                var duplicatesDisplayElem = document.getElementById('duplicatesDisplay');
+
+
+
+                fileInput.addEventListener('change', function (e) {
+
+
+
+                    $(".loader").css("display", "block");
+                    var file = fileInput.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        // var empIdNum = localStorage.getItem('empIdNum');
+                        fileDisplayArea.innerText = reader.result;
+                        fileIn = reader.result;
+                        //console.log(fileIn);
+                        var fileInParsed = fileIn.replace(/(00\/00\/0000)/g, ''); // Removing 00/00/00 dates (i.e. Quorum)
+                        //console.log(fileInParsed);
+                        //console.log("----------------------------------------");
+                        //json object
+                        var csvData = Papa.parse(fileInParsed, parseConfig);
+                        //console.log(csvData);
+                        //csvData.data is the json object with all the data in it
+                        csvOutTemp = csvData.data; // Debug - to be removed later
+                        var payPrdHours;
+
+                        payPrdHours = $("#ckBox input[type='radio']:checked").val();
+
+                        function getPeriodHours() {
+                            for (var i = 0; i < csvOutTemp.length; i++) {
+                                if (csvOutTemp[74] == 0) {
+                                    console.log(csvOutTemp)
+                                }
+
+                                if (csvOutTemp[i]['CalcSrc_PartialHours1'] == null || csvOutTemp[i]['CalcSrc_PartialHours1'] == 0) {
+                                    payPrdHours = $("#ckBox input[type='radio']:checked").val();
+                                    console.log(csvOutTemp[i]['CalcSrc_PartialHours1']);
+                                }
+                            }
+                        }
+
+                        //// GETTING MIDDLE INITIAL VALUE ////
+                        // Taking only the first character of the middle name to populate the M.I. field
+                        for (var i = 0, l = csvOutTemp.length; i < l; i++) {
+                            if (csvOutTemp[i]["Middle Name"] !== undefined) {
+                                var middleName = csvOutTemp[i]["Middle Name"];
+                                var middleInit = middleName.substring(0, 1);
+                                csvOutTemp[i]["MiddleInitial"] = middleInit;
+                            }
+                            if (csvOutTemp[i]["MiddleName"] !== undefined) {
+                                var middleName = csvOutTemp[i]["MiddleName"];
+                                var middleInit = middleName.substring(0, 1);
+                                csvOutTemp[i]["MiddleInitial"] = middleInit;
+                            }
+                        }
+                        //// END Getting Middle Initial Value ////
+
+                        //// SETTING NEW/UPDATED VALUES IN DATA OBJECTS ////
+                        //console.log(csvOutTemp);
+                        /*Modifying original CSV data to add the employer ID in the output CSV
+                        These values are being brought in above from local storage
+                        Getting date picker value first for efficiency*/
+                        var payBegin = document.getElementById("payBeginPicker").value;
+                        var payEnd = document.getElementById("payEndPicker").value;
+                        var payDate = document.getElementById("picker").value;
+                        var csvDataEmpId = csvOutTemp.map(function (o) {
+                            o.EmployerId = empIdNum;
+                            o.CreateDate = dateTimeStamp;
+                            o.RecordStatus = recordStatus;
+                            o.Source = source;
+                            o.BatchNumber = thisBatchNum;
+                            o.ContractNumber = contractNum;
+                            o.CompletedStages = completedStages;
+                            o.AscLocation = ascLocation;
+                            o.PayrollStartDate = payBegin;
+                            o.PayrollEndDate = payEnd;
+                            o.CheckDate = payDate; // From date picker (was PayrollEndDate)
+                            if (empLocation != '') {
+                                o.EmpLocation = empLocation; // Some mappings use "EmpLocation" and others use "Location" or "Division"
+                                o.Location = empLocation;
+                                o.Division = empLocation;
+                            }
+                            return o;
+                        })
+                        //// END Setting New/Updated Values in Data Objects ////
+
+                        csvOutputTemp = csvDataEmpId; // Debug
+                        // var employerConfigCsv = getMapById(empIdNum);
+                        // console.log('I am here')
+                        // console.log(employerConfigCsv)
+                        /* Check if a term date is older than 90 days - expects a date in the format 'MM/DD/YYYY' or 'YYYY/MM/DD' and will handle empty strings*/
+                        var checkTermDate = function (testDate) {
+                            if (testDate == '') {
+                                return true;
+                            } else {
+                                var inputDate = Date.parse(testDate); // Parsing the date from the payroll file
+                                var todayMinus90 = Date.parse(new Date(new Date().setDate(new Date().getDate() - 90))); // Getting the date from 90 days ago and converting to same format
+                                return (inputDate < todayMinus90 ? false : true);
+                            }
+                        }
+                        var removeOldTermsFunc = function () { // This function removes the dates
+                            var termFilteredArr = [];
+                            var termDateFieldName = employerConfigCsv[25]; // Getting the name of this client's termination date field
+                            for (i = 0; i < csvOutputTemp.length; i++) {
+                                if (checkTermDate(csvOutputTemp[i][termDateFieldName]) == true) {
+                                    termFilteredArr.push(csvOutputTemp[i]);
+                                }
+                            }
+                            return termFilteredArr;
+                        }
+
+                        if (removeOldTerms !== 'No') {
+                            var csvDataEmpId = removeOldTermsFunc(); // Need to make a clearer data path with all these arrays
+                            //console.log('%cRemoved terms older than 90 days', 'background: #CCFFCC; color: green');
+                        }
+                        //// END remove >90 day terms ////
+
+                        //// DETERMINE EMPLOYEE STATUS AND STATUS DATE ////
+                        // Setting keys to pull in values from imported payroll data
+                        var hireDate = employerConfigCsv[24];
+                        var termDate = employerConfigCsv[25];
+                        var rehireDate = employerConfigCsv[26];
+                        var payrollHrs = employerConfigCsv[191];
+                        var taxID = employerConfigCsv[10];
+                        // console.log('payroll ' + payrollHrs)
+                        var statusField = employerConfigCsv[246];
+                        var statusDateField = employerConfigCsv[39];
+
+                        var fillZero = function (num) { // this function ensures single digit numbers are given a leading 0
+                            return num < 10 ? '0' + num : num;
+                        }
+
+                        var timestampToStr = function (ts) { // converting timestamp back to string in the format MM/DD/YYYY
+                            let timeStamp = ts;
+                            let tsObj = new Date(timeStamp);
+                            let month = tsObj.getMonth() + 1; // months returned using starting index of 0
+                            let day = tsObj.getDate();
+                            let year = tsObj.getFullYear();
+                            let dateString = fillZero(month) + '/' + fillZero(day) + '/' + year;
+                            return dateString;
+                        }
+
+                        // > Accepts three dates as input: hire date, term date and rehire date ('MM/DD/YYYY' or 'YYYY/MM/DD')
+                        // > Returns an array of two values: [ <employee status>, <employee status date> ]
+                        var determineEmpStatus = function (hire, term, rehire) {
+                            let hired = Date.parse(hire);
+                            let termed = Date.parse(term);
+                            let rehired = Date.parse(rehire);
+                            var results = [];
+                            if (Number.isNaN(hired) && Number.isNaN(termed) && Number.isNaN(rehired)) { // Date.parse on non-dates = NaN
+                                //console.log('No status dates were found');
+                                results = ['', '']; // returning empty values if no dates are provided
+                                return results;
+                            } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == true && Number.isNaN(rehired) == true) {
+                                results = ['A', timestampToStr(hired)];
+                                return results;
+                            } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == false && Number.isNaN(rehired) == true) {
+                                results = ['T', timestampToStr(termed)];
+                                return results;
+                            } else if (Number.isNaN(hired) == false && Number.isNaN(termed) == false && Number.isNaN(rehired) == false) {
+                                if (termed > rehired) {
+                                    results = ['T', timestampToStr(termed)];
+                                    return results;
+                                } else {
+                                    results = ['A', timestampToStr(rehired)];
+                                    return results;
+                                }
+                            }
+                        }
+
+                        //Function to get 
+
+                        //* Function to add salary hours to payroll hours field
+                        function checkIfSalary(hired, termed, rehired, payrollHours) {
+                            if (payrollHours == '' || payrollHours == 0) {
+                                if (termed == '' || rehired !== '') {
+                                    payPrdHours = $("#ckBox input[type='radio']:checked").val();
+                                    csvDataEmpId[i][payrollHrs] = payPrdHours;
+                                    console.log(csvDataEmpId[i][payrollHrs]);
+                                }
+                            }
+                        }
+
+                        // Iterating through all rows to set employee status and status date
+                        function iterateRows() {
+                            for (i = 0; i < csvDataEmpId.length; i++) {
+                                let hired = csvDataEmpId[i][hireDate];
+                                let termed = csvDataEmpId[i][termDate];
+                                let rehired = csvDataEmpId[i][rehireDate];
+                                var payrollHours = csvDataEmpId[i][payrollHrs];
+                                var taxIdSsn = csvDataEmpId[i][taxID];
+                                // console.log('here are the payroll hours ' + payrollHours);
+                                var resultArr = determineEmpStatus(hired, termed, rehired);
+                                //console.log(resultArr); // debug
+
+                                //* If Salary box is checked get value of radio button
+                                if ($('.isSalary').is(':checked')) {
+                                    checkIfSalary(hired, termed, rehired, payrollHours);
+                                }
+
+                                //* Check taxId length and if less than 9 put in the correct amount of zeros
+                                var zero = '0';
+                                if (taxIdSsn.length <= 7) {
+                                    let newTaxId = `=("${zero}${zero}${taxIdSsn}")`
+                                    console.log(newTaxId);
+                                    csvDataEmpId[i][taxID] = newTaxId;
+                                } else if (taxIdSsn.length < 9) {
+                                    let newTaxId = `=("${zero}${taxIdSsn}")`
+                                    console.log(newTaxId);
+                                    csvDataEmpId[i][taxID] = newTaxId;
+                                }
+                                //* Set employee status and the date 
+                                if (resultArr !== undefined) {
+                                    csvDataEmpId[i][statusField] = resultArr[0]; // setting the employee status value
+                                    csvDataEmpId[i][statusDateField] = resultArr[1]; // setting status change date
+                                }
+                            }
+                        }
+
+                        iterateRows();
+
+                        //// END Determine Status and Status Date ////
+
+                        /* Find and display duplicates based on SSN/Tax ID field */
+                        // Should use csvDataEmpId instead of csvOutputTemp after testing
+                        var taxIdKeyName = employerConfigCsv[10]; // Getting the name of this client's Tax ID/SSN keys to find it in objects
+                        filteredArr = [];
+                        for (var i = 0; i < csvOutputTemp.length; i++) {
+                            for (var n = i + 1; n < csvOutputTemp.length; n++) {
+                                if (csvOutputTemp[i][taxIdKeyName] == csvOutputTemp[n][taxIdKeyName]) {
+                                    filteredArr.push(csvOutputTemp[n]);
+                                }
+                            }
+                        }
+                        // Although the filteredArr variable should contain at least one row of each of the duplicated entries, it is not all inclusive
+                        // As a result, we need to create a difference array based on those values - then finally find the reverse as our result
+                        function filterByDifference(array1, array2, compareField) {
+                            var onlyInA = differenceInFirstArray(array1, array2, compareField);
+                            var onlyInb = differenceInFirstArray(array2, array1, compareField);
+                            return onlyInA.concat(onlyInb);
+                        }
+                        function differenceInFirstArray(array1, array2, compareField) {
+                            return array1.filter(function (current) {
+                                return array2.filter(function (current_b) {
+                                    return current_b[compareField] === current[compareField];
+                                }).length == 0;
+                            });
+                        }
+                        // Calling the above function
+                        var tempOut1 = filterByDifference(filteredArr, csvOutputTemp, taxIdKeyName);
+                        var tempOut2 = filterByDifference(tempOut1, csvOutputTemp, taxIdKeyName);
+                        finalFilteredVal = tempOut2; // Debug
+
+                        // To be moved later!
+                        function json2table(json, classes) {
+                            var cols = Object.keys(json[0]);
+                            var headerRow = '';
+                            var bodyRows = '';
+                            classes = classes || '';
+                            function capitalizeFirstLetter(string) {
+                                return string.charAt(0).toUpperCase() + string.slice(1);
+                            }
+                            cols.map(function (col) {
+                                headerRow += '<th>' + capitalizeFirstLetter(col) + '</th>';
+                            });
+                            json.map(function (row) {
+                                bodyRows += '<tr>';
+                                cols.map(function (colName) {
+                                    bodyRows += '<td>' + row[colName] + '</td>';
+                                })
+                                bodyRows += '</tr>';
+                            });
+                            return '<table style="font-size:10pt;" class="' + // reduced font-size
+                                classes +
+                                '"><thead><tr>' +
+                                headerRow +
+                                '</tr></thead><tbody>' +
+                                bodyRows +
+                                '</tbody></table>';
+                        }
+
+                        // Show duplicates output field if any are found
+                        var strFilteredArr = [];
+                        if (tempOut2.length > 0) {
+                            duplicatesDisplayElem.innerHTML = json2table(tempOut2, 'table');
+                        } else {
+                            duplicatesDisplayElem.innerText = 'No duplicates were found in this file';
+                        }
+                        /* End of duplicates search and display */
+
+                        /*
+                        var csvTrimmedOutput = [];
+                        var csvOutputLength = csvDataEmpId.legth;
+                        //console.log(csvOutputLength);
+                        for (var i = 0+trimTop; i < csvOutputLength-trimBottom; i++) {
+                            csvTrimmedOutput.push(csvDataEmpId[i]);
+                        }
+                        */
+
+
+                        //console.log("::::::::::::::::::::::::::::::::::::::::");
+                        // Unparsing JSON object back to CSV
+                        var csvOut = Papa.unparse({
+                            fields: employerConfigCsv, //*array of headers
+                            // fields: ["ID","CreateDate","UpdateDate","RecordStatus","Source","SourceId","BatchNumber","CompletedStages","EIN","Location","SSN","First Name","MiddleName","Last Name","Suffix","EE Pre-Tax","Loan Repayments","Hours Worked YTD","Address 1","Address 2","City","State","Zip Code","Date of Birth","Date of Hire","Date of Term","Rehire Date","Company","EmployeeStatus","EligibilityIndicator","CombinationRecordIdentifier","SanityCheckFlag","User-Defined-Float","EE Roth","1st Loan No","1st Loan Pmt","2nd Loan No","2nd Loan Pmt","ER Match","StatusChangeDate","StatusChangeReason","EmployeeEligibilityDate","EmployeeStartDate","Cont#","EmployerId","AscLocation","LastSanityCheckDate","PlanId","EmployeeId","LocationName","TransType","DeferralPercentage","DeferralAmount","AfterTaxPercentage","AfterTaxAmount","DeferralPercentEffectiveDate","Division","TransamericaRequestDate","TransamericaEffectivePayrollChangeDate","PriorPreTaxContribution","PriorRothContribution","NewPreTaxContribution","NewRothContribution","HardshipSuspension","HardshipLiftDate","PreTaxCatchUpPercent","PreTaxCatchUpAmount","RothCatchUpPercent","RothCatchUpAmount","TransamericaDateChanged","Middle Initial","ER QACA Match","Compensation YTD","Email Address","PeriodHours","PeriodGrossComp","Loan1YTD","Loan2YTD","EEPreTaxYTD","Roth401kEEYTD","ERMatchYTD","Roth401kERMatch","Roth401kERMatchYTD","DivisionName","TermCode","NeedsRepair","RepairNotes","Gender","MaritalStatus","PayFrequency","CorporateOfficer","IsUnion","IsEligible","IsHighlyCompensated","CheckDate","PayrollEndDate","EEPreTaxPlan1","EEPreTaxContrib1","EEPreTaxContrib1Desc","EEPreTaxContrib1Percent","EEPreTaxContrib1Dollars","EEPreTaxPlan2","EEPreTaxContrib2","EEPreTaxContrib2Desc","EEPreTaxContrib2Percent","EEPreTaxContrib2Dollars","EEPreTaxPlan3","EEPreTaxContrib3","EEPreTaxContrib3Desc","EEPreTaxContrib3Percent","EEPreTaxContrib3Dollars","PostTaxPlan1","PostTaxContrib1","PostTaxContrib1Desc","PostTaxContrib1Percent","PostTaxContrib1Dollars","PostTaxPlan2","PostTaxContrib2","PostTaxContrib2Desc","PostTaxContrib2Percent","PostTaxContrib2Dollars","PostTaxPlan3","PostTaxContrib3","PostTaxContrib3Desc","PostTaxContrib3Percent","PostTaxContrib3Dollars","CatchUpPlan1","CatchUpPlan1Contrib","CatchUpPlan1ContribDesc","CatchUpPlan2","CatchUpPlan2Contrib","CatchUpPlan2ContribDesc","CatchUpPlan3","CatchUpPlan3Contrib","CatchUpPlan3ContribDesc","ERMatch2","ERMatch3","ERCatchUpMatch","ERCatchUpMatch2","ERCatchUpMatch3","3rd Loan No","3rd Loan Pmt","ER Safe Harbor Match"],
+                            data: csvDataEmpId,
+                            config: unparseConfig
+                        })
+                        //console.log("========================================");
+                        //console.log(csvOut);
+                        fileOutDisplayArea.innerText = csvOut;
+                        $(".loader").css("display", "none");
+                        // Exporting CSV file
+                        download("FO Payroll Report - Igor Upload - " + decodeURI(empName) + ".csv", csvOut);
+                        // Notify the user the file is ready
+                        // alert("File is ready - please check your downloads"); // precoded this alert, but it is annoying - adding text to page instead
+                        // document.getElementById('doneText').innerHTML = "<center><h3>File successfully processed, please check your downloads</h3></center>";
+
+                    }
+                    reader.readAsText(file);
+                });
+
+            }
+        </script>
+
+</body>
+
+</html>

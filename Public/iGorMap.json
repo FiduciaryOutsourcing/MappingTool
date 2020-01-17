@@ -1,0 +1,434 @@
+[
+  {
+    "FiduciaryOutsourcingField": "EIN",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Location",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "TaxId",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "FirstName",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "MiddleName",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "LastName",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Suffix",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "EEPreTax",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "LoanRepayments",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "HoursWorkedYTD",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Address1",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Address2",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "City",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "State",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "PostalCode",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "BirthDate",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "HireDate",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "TerminationDate",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "RehireDate",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Company",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "EmployeeStatus",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "ContractNumber",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "EmployerId",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "EmployeeId",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "LocationName",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Division",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "ErQacaMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CompensationYTD",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Email",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "PeriodGrossComp",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "DivisionName",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Gender",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "MaritalStatus",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "PayFrequency",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CorporateOfficer",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "IsUnion",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "IsEligible",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "IsHighlyCompensated",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "SafeHarborMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "Title",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "ERPS",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k$",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k%",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth$",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth%",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k$Match",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k%Match",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth$Match",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth%Match",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k$CU",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k%CU",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth$CU",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth%CU",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k$CUMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_401k%CUMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth$CUMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_Roth%CUMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours1",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours2",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours3",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours4",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours5",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours6",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours7",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours8",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours9",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours10",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours11",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours12",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours13",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours14",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours15",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours16",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours17",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours18",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours19",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_PartialHours20",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt1",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt2",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt3",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt4",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt5",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt6",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt7",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt8",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt9",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt10",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt11",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt12",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt13",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt14",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt15",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt16",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_LoanPmt17",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp1",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp2",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp3",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp4",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp5",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp6",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp7",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp8",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp9",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "CalcSrc_ExclComp10",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "WorkEmail",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "HomePhone",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "ERQACACUMatch",
+    "YourField": ""
+  },
+  {
+    "FiduciaryOutsourcingField": "DavisBacon",
+    "YourField": ""
+  }
+]
